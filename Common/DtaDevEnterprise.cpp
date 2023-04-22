@@ -384,11 +384,6 @@ uint8_t DtaDevEnterprise::setPassword(char * password, char * userid, char * new
 	string defaultPassword;
 	char *pwd = password, *newpwd = newpassword;
 
-    if (securemode) {
-        LOG(I) << "setSIDPassword in secure mode in the Enterprise SSC is not supported";
-        return lastRC;
-    }
-
 	if (11 > strnlen(userid, 15)) {
 		LOG(E) << "Invalid Userid " << userid;
 		return DTAERROR_INVALID_PARAMETER;
@@ -1279,11 +1274,6 @@ uint8_t DtaDevEnterprise::setSIDPassword(char * oldpassword, char * newpassword,
 {
 	LOG(D1) << "Entering DtaDevEnterprise::setSIDPassword()";
 	uint8_t lastRC = 0;
-
-    if (securemode) {
-        LOG(I) << "setSIDPassword in the Enterprise SSC is not supported";
-        return lastRC;
-    }
 
 	vector<uint8_t> user;
     set8(user, OPALUID[OPAL_SID_UID]);
